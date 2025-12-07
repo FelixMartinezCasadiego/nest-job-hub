@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -9,7 +9,13 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./*"],
+      "@nestjs/*": ["../node_modules/@nestjs/*"],
+      "@openai/*": ["../node_modules/@openai/*"]
+    },
+    "moduleResolution": "node",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,

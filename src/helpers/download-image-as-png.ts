@@ -1,7 +1,7 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import * as path from 'path';
 import * as fs from 'fs';
-import * as sharp from 'sharp';
+import * as path from 'path';
+import sharp from 'sharp';
 
 export const dowloandImageAsPng = async (
   url: string,
