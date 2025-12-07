@@ -2,32 +2,7 @@ import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 
 /* Use cases */
-import {
-  audioToTextUseCase,
-  basicPromptUseCase,
-  developerUseCase,
-  imageGenerationGetterUseCase,
-  imageGenerationUseCase,
-  imageVariationUseCase,
-  orthographyUseCase,
-  prosConsDicusserStreamUseCase,
-  prosConsDicusserUseCase,
-  textToAudioGetterUseCase,
-  textToAudioUseCase,
-  translateUseCase,
-} from './use-cases';
-
-/* Dtos */
-import {
-  AudioToTextDto,
-  ImageGenerationDto,
-  ImageVariationDto,
-  JavascriptDeveloperDto,
-  OrthographyDto,
-  ProsConsDiscusserDto,
-  TextToAudioDto,
-  TranslateDto,
-} from './dtos';
+import { basicPromptUseCase } from './use-cases';
 
 @Injectable()
 export class GptService {
@@ -36,59 +11,6 @@ export class GptService {
   });
 
   // use cases
-  async orthographyCheck(orthographyDto: OrthographyDto) {
-    return await orthographyUseCase(this.openai, {
-      prompt: orthographyDto.prompt,
-    });
-  }
-
-  async prosConsDicusser({ prompt }: ProsConsDiscusserDto) {
-    return await prosConsDicusserUseCase(this.openai, { prompt });
-  }
-
-  async prosConsDicusserStream({ prompt }: ProsConsDiscusserDto) {
-    return await prosConsDicusserStreamUseCase(this.openai, { prompt });
-  }
-
-  async translateText({ prompt, lang }: TranslateDto) {
-    return await translateUseCase(this.openai, { prompt, lang });
-  }
-
-  async textToAudio({ prompt, voice }: TextToAudioDto) {
-    return await textToAudioUseCase(this.openai, { prompt, voice });
-  }
-
-  async textToAudioGetter(fileId: string) {
-    return await textToAudioGetterUseCase(fileId);
-  }
-
-  async audioToText(
-    audioFile: Express.Multer.File,
-    audioToTextDto: AudioToTextDto,
-  ) {
-    const { prompt } = audioToTextDto;
-
-    return await audioToTextUseCase(this.openai, { audioFile, prompt });
-  }
-
-  async imageGeneration(imageGenerationDto: ImageGenerationDto) {
-    return imageGenerationUseCase(this.openai, imageGenerationDto);
-  }
-
-  async imageGenerationGetter(fileName: string) {
-    return await imageGenerationGetterUseCase(fileName);
-  }
-
-  async imageVariation({ baseImage }: ImageVariationDto) {
-    return imageVariationUseCase(this.openai, { baseImage });
-  }
-
-  async javascriptDeveloper({
-    prompt,
-    conversationId,
-  }: JavascriptDeveloperDto) {
-    return await developerUseCase(this.openai, { prompt, conversationId });
-  }
 
   async basicPrompt(prompt: string) {
     return await basicPromptUseCase(this.openai, { prompt });
