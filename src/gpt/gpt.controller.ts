@@ -1,4 +1,3 @@
-import { type Response } from 'express';
 import {
   Body,
   Controller,
@@ -11,6 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { type Response } from 'express';
 import { diskStorage } from 'multer';
 
 /* Services */
@@ -19,9 +19,10 @@ import { GptService } from './gpt.service';
 /* Dtos */
 import {
   AudioToTextDto,
-  JavascriptDeveloperDto,
+  BasicPromptDto,
   ImageGenerationDto,
   ImageVariationDto,
+  JavascriptDeveloperDto,
   OrthographyDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
@@ -38,6 +39,11 @@ export class GptController {
   @Post('orthography-check')
   orthographyCheck(@Body() orthographyDto: OrthographyDto) {
     return this.gptService.orthographyCheck(orthographyDto);
+  }
+
+  @Post('basic-prompt')
+  basicPrompt(@Body() basicPromptDto: BasicPromptDto) {
+    return this.gptService.basicPrompt(basicPromptDto.prompt);
   }
 
   @Post('pros-cons-discusser')

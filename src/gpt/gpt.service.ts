@@ -1,9 +1,10 @@
-import OpenAI from 'openai';
 import { Injectable } from '@nestjs/common';
+import OpenAI from 'openai';
 
 /* Use cases */
 import {
   audioToTextUseCase,
+  basicPromptUseCase,
   developerUseCase,
   imageGenerationGetterUseCase,
   imageGenerationUseCase,
@@ -19,9 +20,9 @@ import {
 /* Dtos */
 import {
   AudioToTextDto,
-  JavascriptDeveloperDto,
   ImageGenerationDto,
   ImageVariationDto,
+  JavascriptDeveloperDto,
   OrthographyDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
@@ -87,5 +88,9 @@ export class GptService {
     conversationId,
   }: JavascriptDeveloperDto) {
     return await developerUseCase(this.openai, { prompt, conversationId });
+  }
+
+  async basicPrompt(prompt: string) {
+    return await basicPromptUseCase(this.openai, { prompt });
   }
 }
