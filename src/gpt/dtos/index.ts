@@ -8,3 +8,5 @@ export * from './text-to-audio.dto';
 export * from './translate.dto';
 
 export * from './basic-prompt.dto';
+
+export * from './improve-resume.dto';
