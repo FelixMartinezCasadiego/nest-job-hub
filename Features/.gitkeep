@@ -1,0 +1,14 @@
+# Features Directory
+
+Esta carpeta contiene los briefs de features gestionados por el Product Owner Agent.
+
+Cada archivo documenta:
+
+- Solicitud original
+- Preguntas y clarificaciones
+- Decisiones cerradas
+- Scope final aprobado
+- Historial de cambios
+- Notas de implementación
+
+Ver [`../agents/product-owner-agent.md`](../agents/product-owner-agent.md) para más detalles sobre el formato.
